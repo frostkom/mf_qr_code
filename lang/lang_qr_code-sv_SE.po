@@ -1,0 +1,184 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-01 18:45+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Martin Fors\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: sv_SE\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: esc_html__;esc_html_e;esc_attr__;esc_attr_e;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../include/classes.php:101
+msgid "Created"
+msgstr "Skapad"
+
+#: ../include/classes.php:112
+msgid "QR"
+msgstr ""
+
+#: ../include/classes.php:125
+msgid "Create"
+msgstr "Skapa"
+
+#: ../include/classes.php:135
+msgid "QR Code"
+msgstr "QR-kod"
+
+#: ../include/classes.php:157
+msgid "I could not create the QR code for you"
+msgstr "Jag kunde inte ska QR-koden åt dig"
+
+#~ msgid "Choose Here"
+#~ msgstr "Välj här"
+
+#~ msgid "Provider"
+#~ msgstr "Leverantör"
+
+#~ msgid "Username"
+#~ msgstr "Användarnamn"
+
+#~ msgid "Password"
+#~ msgstr "Lösenord"
+
+#~ msgid "API Key"
+#~ msgstr "API-nyckel"
+
+#~ msgid "Senders"
+#~ msgstr "Avsändare"
+
+#~ msgid "Use the URL %s for delivery reports"
+#~ msgstr "Använd URLen %s för leveransrapporter"
+
+#~ msgid "Company, 0046701234567"
+#~ msgstr "Företag, 0046701234567"
+
+#~ msgid ""
+#~ "One or more numbers/names separated by comma, 1-11 characters each, is "
+#~ "used for selecting which number/name is displayed to the recipient"
+#~ msgstr ""
+#~ "Ett eller flera nummer/namn separerat av komma, 1-11 tecken per namn, "
+#~ "används för att kunna välja avsändare"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistik"
+
+#~ msgid "From"
+#~ msgstr "Från"
+
+#~ msgid "To"
+#~ msgstr "Till"
+
+#~ msgid "Message"
+#~ msgstr "Meddelande"
+
+#~ msgid "%s SMS, approx. %s left"
+#~ msgstr "%s SMS, ca %s kvar"
+
+#~ msgid "Totally %s SMS, approx. %s"
+#~ msgstr "Totalt %s SMS, ca. %s"
+
+#~ msgid "Phone number"
+#~ msgstr "Telefonnummer"
+
+#~ msgid "Send SMS to everyone in the group"
+#~ msgstr "Skicka SMS till alla i gruppen"
+
+#~ msgid ""
+#~ "You have not entered a cell phone number in your profile. Please do so, "
+#~ "and then you can start sending messages"
+#~ msgstr ""
+#~ "Du har inte fyllt i ett mobilnummer i din profil. Var vänlig gör det, så "
+#~ "kan du börja skicka sen"
+
+#~ msgid ""
+#~ "You have not entered any senders in the settings. Please do so, and then "
+#~ "you can start sending messages"
+#~ msgstr ""
+#~ "Du har inte angett någon avsändare i inställningarna. Var vänlig gör det, "
+#~ "så kan du börja skicka sen"
+
+#~ msgid "All"
+#~ msgstr "Alla"
+
+#~ msgid "Trash"
+#~ msgstr "Papperskorg"
+
+#~ msgid "Calculated from %d characters"
+#~ msgstr "Beräknad utifrån %d tecken"
+
+#~ msgid "Reported from provider"
+#~ msgstr "Rapporterat från leverantör"
+
+#~ msgid "The message was not sent, contact an admin if this persists"
+#~ msgstr ""
+#~ "Meddelandet skickades inte, kontakta en administratör om problemet "
+#~ "kvarstår"
+
+#~ msgid "The message was sent"
+#~ msgstr "Meddelandet skickades"
+
+#~ msgid "Send SMS"
+#~ msgstr "Skicka SMS"
+
+#~ msgid "Add more"
+#~ msgstr "Lägg till fler"
+
+#~ msgid "Profile"
+#~ msgstr "Profil"
+
+#~ msgid "or"
+#~ msgstr "eller"
+
+#~ msgid "Settings"
+#~ msgstr "Inställningar"
+
+#~ msgid "Send"
+#~ msgstr "Skicka"
+
+#~ msgid ""
+#~ "You have to %sadd your phone number in the profile%s or %sadd a sender on "
+#~ "the settings page%s for this to work"
+#~ msgstr ""
+#~ "Du behöver %slägga in ditt telefonnummer i profilen%s eller %slägga till "
+#~ "en avsändare på inställningssidan%s för att detta ska fungera"
+
+#~ msgid ""
+#~ "You have to %sadd Provider and credentials on the settings page%s for "
+#~ "this to work"
+#~ msgstr ""
+#~ "Du behöver %slägga till leverantör och inloggningsuppgifter på "
+#~ "inställsningssidan%s för att detta ska fungera"
+
+#~ msgid "Amount / User"
+#~ msgstr "Antal / användare"
+
+#~ msgid "There were no text messages sent during this period"
+#~ msgstr "Det skickades inga SMS under denna period"
+
+#~ msgid "Filter"
+#~ msgstr "Filtrera"
+
+#~ msgid "Overall"
+#~ msgstr "Allmänt"
+
+#~ msgid "First Date"
+#~ msgstr "Första datum"
+
+#~ msgid "Last date"
+#~ msgstr "Senaste datum"
+
+#~ msgid "Total Amount"
+#~ msgstr "Totalt antal"
+
+#~ msgid "1-11 characters"
+#~ msgstr "1-11 tecken"
+
+#~ msgid "Delete"
+#~ msgstr "Radera"
