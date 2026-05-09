@@ -28,8 +28,13 @@ class mf_qr_code
 		$obj_cron->end();
 	}
 
-	function get_html($post_id, $generate_image = true)
+	function get_html($data)
 	{
+		if(!isset($data['post_id'])){			$data['post_id'] = 0;}
+		if(!isset($data['post_url'])){			$data['post_url'] = "";}
+		if(!isset($data['generate_image'])){	$data['generate_image'] = true;}
+		if(!isset($data['output_type'])){		$data['output_type'] = 'link';}
+
 		$out = "";
 
 		if(!class_exists('QRcode'))
@@ -37,38 +42,61 @@ class mf_qr_code
 			include_once("phpqrcode/qrlib.php");
 		}
 
-		$post_url = get_permalink($post_id);
+		if($data['post_id'] > 0)
+		{
+			$data['post_url'] = get_permalink($data['post_id']);
+		}
 
 		list($upload_path_qr, $upload_url_qr) = get_uploads_folder($this->post_type);
 
-		$qr_file = "qr_code_".md5($post_url).".svg";
+		$qr_file = "qr_code_".md5($data['post_url']).".svg";
 
 		if(file_exists($upload_path_qr.$qr_file))
 		{
-			$out .= "<a href='".$upload_url_qr.$qr_file."'><i class='fas fa-qrcode fa-2x green' title='".__("Created", 'lang_qr_code')."'></i></a>";
+			switch($data['output_type'])
+			{
+				default:
+				case 'link':
+					$out .= "<a href='".$upload_url_qr.$qr_file."'><i class='fas fa-qrcode fa-2x green' title='".__("Created", 'lang_qr_code')."'></i></a>";
+				break;
+
+				case 'image':
+					$out .= "<img src='".$upload_url_qr.$qr_file."' title='".__("Created", 'lang_qr_code')."'/>";
+				break;
+			}
 		}
 
 		else
 		{
-			$qr_file = "qr_code_".md5($post_url).".png";
+			$qr_file = "qr_code_".md5($data['post_url']).".png";
 
 			if(file_exists($upload_path_qr.$qr_file))
 			{
-				$out .= "<a href='".$upload_url_qr.$qr_file."'><i class='fas fa-qrcode fa-2x green' title='".__("Created", 'lang_qr_code')."'></i></a>";
+				switch($data['output_type'])
+				{
+					default:
+					case 'link':
+						$out .= "<a href='".$upload_url_qr.$qr_file."'><i class='fas fa-qrcode fa-2x green' title='".__("Created", 'lang_qr_code')."'></i></a>";
+					break;
+
+					case 'image':
+						$out .= "<img src='".$upload_url_qr.$qr_file."' title='".__("Created", 'lang_qr_code')."'/>";
+					break;
+				}
 			}
 
-			else if($generate_image == true)
+			else if($data['generate_image'] == true)
 			{
-				$qr_file = "qr_code_".md5($post_url).".svg";
+				$qr_file = "qr_code_".md5($data['post_url']).".svg";
 
 				ob_start();
 
-				QRcode::svg($post_url, false, QR_ECLEVEL_H, 5, 7); // L/M/Q/H
+				QRcode::svg($data['post_url'], false, QR_ECLEVEL_H, 5, 7); // L/M/Q/H
 
 				$svg = ob_get_contents();
 				ob_end_clean();
 
-				$site_icon = get_option('site_icon');
+				/*$site_icon = get_option('site_icon');
 
 				if($site_icon > 0)
 				{
@@ -83,13 +111,23 @@ class mf_qr_code
 
 					$pos = strripos($svg, '</svg>');
 					$svg = substr_replace($svg, $logoSvg . '</svg>', $pos, 6);
-				}
+				}*/
 
 				$success = set_file_content(array('file' => $upload_path_qr.$qr_file, 'mode' => 'w', 'content' => $svg));
 
 				if($success)
 				{
-					$out .= "<a href='".$upload_url_qr.$qr_file."'><i class='fas fa-qrcode fa-2x green' title='".__("Created", 'lang_qr_code')."'></i></a>";
+					switch($data['output_type'])
+					{
+						default:
+						case 'link':
+							$out .= "<a href='".$upload_url_qr.$qr_file."'><i class='fas fa-qrcode fa-2x green' title='".__("Created", 'lang_qr_code')."'></i></a>";
+						break;
+
+						case 'image':
+							$out .= "<img src='".$upload_url_qr.$qr_file."' title='".__("Created", 'lang_qr_code')."'/>";
+						break;
+					}
 				}
 
 				else
@@ -97,7 +135,7 @@ class mf_qr_code
 					$out .= "<i class='fa fa-times fa-2x red' title='".__("I could not generate a QR code for you", 'lang_qr_code')."'></i>";
 				}
 
-				/*QRcode::png($post_url, $upload_path_qr.$qr_file, QR_ECLEVEL_H, 5, 7); // L/M/Q/H
+				/*QRcode::png($data['post_url'], $upload_path_qr.$qr_file, QR_ECLEVEL_H, 5, 7); // L/M/Q/H
 
 				$site_icon = get_option('site_icon');
 
@@ -228,7 +266,7 @@ class mf_qr_code
 					case 'qr_code':
 						if(get_post_status($post_id) == 'publish')
 						{
-							$qr_html = $this->get_html($post_id, false);
+							$qr_html = $this->get_html(array('post_id' => $post_id, 'generate_image' => false));
 
 							if($qr_html != '')
 							{
@@ -255,11 +293,19 @@ class mf_qr_code
 		);
 
 		$post_id = check_var('post_id');
+		$post_url = check_var('post_url', 'url');
+		$output_type = check_var('output_type');
 
 		if($post_id > 0)
 		{
 			$json_output['success'] = true;
-			$json_output['html'] = $this->get_html($post_id);
+			$json_output['html'] = $this->get_html(array('post_id' => $post_id, 'output_type' => $output_type));
+		}
+
+		else if($post_url != '')
+		{
+			$json_output['success'] = true;
+			$json_output['html'] = $this->get_html(array('post_url' => $post_url, 'output_type' => $output_type));
 		}
 
 		else
