@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-01 18:45+0100\n"
+"POT-Creation-Date: 2026-06-08 09:48+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Martin Fors\n"
 "Language-Team: \n"
@@ -15,23 +15,37 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../include/classes.php:101
+#: ../include/classes.php:60
+#: ../include/classes.php:64
+#: ../include/classes.php:79
+#: ../include/classes.php:83
+#: ../include/classes.php:124
+#: ../include/classes.php:128
 msgid "Created"
 msgstr "Skapad"
 
-#: ../include/classes.php:112
-msgid "QR"
-msgstr ""
+#: ../include/classes.php:135
+msgid "I could not generate a QR code for you"
+msgstr "Jag kunde inte generera QR-koden åt dig"
 
-#: ../include/classes.php:125
+#: ../include/classes.php:234
+#: ../include/classes.php:317
 msgid "Create"
 msgstr "Skapa"
 
-#: ../include/classes.php:135
+#: ../include/classes.php:250
 msgid "QR Code"
 msgstr "QR-kod"
 
-#: ../include/classes.php:157
+#: ../include/classes.php:251
+msgid "Display QR Code Generator"
+msgstr "Visa en QR-kodgenerator"
+
+#: ../include/classes.php:289
+msgid "QR"
+msgstr ""
+
+#: ../include/classes.php:351
 msgid "I could not create the QR code for you"
 msgstr "Jag kunde inte ska QR-koden åt dig"
 

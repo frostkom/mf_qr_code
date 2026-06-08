@@ -3,7 +3,7 @@
 Plugin Name: MF QR Code
 Plugin URI: https://github.com/frostkom/mf_qr_code
 Description: Add support for creating QR codes
-Version: 1.1.4
+Version: 1.1.6
 Licence: GPLv2 or later
 Author: Martin Fors
 Author URI: https://martinfors.se
@@ -19,6 +19,7 @@ if(!function_exists('is_plugin_active') || function_exists('is_plugin_active') &
 
 	add_action('cron_base', array($obj_qr_code, 'cron_base'), mt_rand(1, 10));
 
+	add_action('enqueue_block_editor_assets', array($obj_qr_code, 'enqueue_block_editor_assets'));
 	add_action('init', array($obj_qr_code, 'init'));
 
 	if(is_admin())

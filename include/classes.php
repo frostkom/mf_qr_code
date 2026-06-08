@@ -220,9 +220,47 @@ class mf_qr_code
 		return $out;
 	}
 
+	function block_render_callback($attributes)
+	{
+		$plugin_include_url = plugin_dir_url(__FILE__);
+		mf_enqueue_script('script_qr_code', $plugin_include_url."script.js", array(
+			'ajax_url' => admin_url('admin-ajax.php'),
+			'loading_animation' => apply_filters('get_loading_animation', ''),
+		));
+
+		$out = "<div".parse_block_attributes(array('class' => "widget qr_code", 'attributes' => $attributes)).">
+			<form".apply_filters('get_form_attr', "").">"
+				.show_textfield(array('type' => 'url', 'name' => 'url'))
+				.show_button(array('type' => 'button', 'name' => 'btnQRCodeRun', 'text' => __("Create", 'lang_qr_code')))
+				."<p class='api_qr_code_image'></p>"
+			."</form>
+		</div>";
+
+		return $out;
+	}
+
+	function enqueue_block_editor_assets()
+	{
+		$plugin_include_url = plugin_dir_url(__FILE__);
+		$plugin_version = get_plugin_version(__FILE__);
+
+		wp_register_script('script_qr_code_block_wp', $plugin_include_url."block/script_wp.js", array('wp-blocks', 'wp-element', 'wp-components', 'wp-editor', 'wp-block-editor'), $plugin_version, true);
+
+		wp_localize_script('script_qr_code_block_wp', 'script_qr_code_block_wp', array(
+			'block_title' => __("QR Code", 'lang_qr_code'),
+			'block_description' => __("Display QR Code Generator", 'lang_qr_code'),
+		));
+	}
+
 	function init()
 	{
 		load_plugin_textdomain('lang_qr_code', false, str_replace("/include", "", dirname(plugin_basename(__FILE__)))."/lang/");
+
+		register_block_type('mf/qrcode', array(
+			'editor_script' => 'script_qr_code_block_wp',
+			'editor_style' => 'style_base_block_wp',
+			'render_callback' => array($this, 'block_render_callback'),
+		));
 	}
 
 	function admin_init()
